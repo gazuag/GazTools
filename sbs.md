@@ -58,9 +58,9 @@ permalink: /sbs/
         });
     });
 }
-  loadArticlesAndGenerateTable("https://wol.jw.org/en/wol/d/r1/lp-e/2023406", "https://wol.jw.org/cmn-Hans/wol/d/r23/lp-chs/2023406");
+  
 </script>
-Yo
+<button onclick="loadArticlesAndGenerateTable('https://wol.jw.org/en/wol/d/r1/lp-e/2023406', 'https://wol.jw.org/cmn-Hans/wol/d/r23/lp-chs/2023406');">Button</button>
 
 
 
