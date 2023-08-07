@@ -10,6 +10,7 @@ permalink: /sbs/
 
   // Helper function to extract elements of a certain type from the DOM
   function extractElementsFromDOM(elements) {
+    alert('extraction');
     return Array.from(elements).map(element => ({
       type: element.tagName.toLowerCase(),
       content: element.outerHTML
@@ -21,10 +22,11 @@ permalink: /sbs/
   fetch(url1)
     .then(response => response.text())
     .then(html => {
+      alert('parsing url1');
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
       const elements1 = doc.querySelectorAll('p, img, h1, h2, h3');
-
+alert('extracting url1');
       const data1 = extractElementsFromDOM(elements1);
 
       // Ajax request to load the second article
