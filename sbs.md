@@ -17,6 +17,7 @@ permalink: /sbs/
   }
 
   // Ajax request to load the first article
+    alert('fetching url1');
   fetch(url1)
     .then(response => response.text())
     .then(html => {
@@ -27,6 +28,7 @@ permalink: /sbs/
       const data1 = extractElementsFromDOM(elements1);
 
       // Ajax request to load the second article
+      alert('fetching url2');
       fetch(url2)
         .then(response => response.text())
         .then(html => {
@@ -35,7 +37,7 @@ permalink: /sbs/
           const elements2 = doc.querySelectorAll('p, img, h1, h2, h3');
 
           const data2 = extractElementsFromDOM(elements2);
-
+alert('generating article');
           // Generate the HTML table
           const numRows = Math.max(data1.length, data2.length);
           for (let i = 0; i < numRows; i++) {
@@ -54,13 +56,14 @@ permalink: /sbs/
 
           table.appendChild(tbody);
           // Append the table to the desired location in the DOM
-          document.body.appendChild(table);
+          alert(table);
+            document.body.appendChild(table);
         });
     });
 }
-  
+  loadArticlesAndGenerateTable('https://wol.jw.org/en/wol/d/r1/lp-e/2023406', 'https://wol.jw.org/cmn-Hans/wol/d/r23/lp-chs/2023406');
 </script>
-<button onclick="loadArticlesAndGenerateTable('https://wol.jw.org/en/wol/d/r1/lp-e/2023406', 'https://wol.jw.org/cmn-Hans/wol/d/r23/lp-chs/2023406');">Button</button>
+<button onclick="alert('click');">Button</button>
 
 
 
