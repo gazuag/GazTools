@@ -3,4 +3,4 @@ header_pages:
   - index.md
   - pinyinize.md
   
-site.title: "Gaz' tools"
+title: "Gaz' tools"
