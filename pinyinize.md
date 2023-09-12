@@ -8,5 +8,5 @@ permalink: /pinyinize/
 <button id="convertButton">Convert</button>
 <textarea id="output" placeholder="Pinyin output will appear here" readonly></textarea>
 
-<script src="/converter.js"></script>
+<script src="converter.js"></script>
 
