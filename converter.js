@@ -9,6 +9,7 @@ let dictionary1 = {};
 
 // Function to load JSON dictionary files
 async function loadDictionaries() {
+    alert("foo");
     try {
         const [data4, data3, data2, data1] = await Promise.all([
             fetch('/pinyinize/pinyin4.json').then(response => response.json()),
@@ -22,6 +23,7 @@ async function loadDictionaries() {
         dictionary4Plus = data4;
         alert("loaded");
     } catch (error) {
+        alert("error");
         console.error('Error loading dictionaries:', error);
     }
 }
