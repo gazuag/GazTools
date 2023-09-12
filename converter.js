@@ -30,10 +30,6 @@ function convert() {
     const inputText = document.getElementById('input').value;
     var outputText = inputText;
 
-// Define a string replacement function
-    function replaceAll(input, search, replace) {
-        return input.split(search).join(replace);
-    }
 
     // Iterate through dictionaries and replace matching strings
     const dictionaries = [dictionary4Plus, dictionary3, dictionary2, dictionary1];
