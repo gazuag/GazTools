@@ -30,10 +30,17 @@ function convert() {
     const inputText = document.getElementById('input').value;
     var outputText = inputText;
 
+// Define a string replacement function
+    function replaceAll(input, search, replace) {
+        return input.split(search).join(replace);
+    }
+
     // Iterate through dictionaries and replace matching strings
     const dictionaries = [dictionary4Plus, dictionary3, dictionary2, dictionary1];
     for (const dictionary of dictionaries) {
+        outputText += "D";
         for (const [key, value] of Object.entries(dictionary)) {
+            outputText += "R";
             // Use the replaceAll function to replace all occurrences of key with value
             outputText = outputText.split(key).join(value);
         }
