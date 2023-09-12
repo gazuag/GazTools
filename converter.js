@@ -23,7 +23,7 @@ async function loadDictionaries() {
         dictionary4Plus = data4;
         alert("loaded");
     } catch (error) {
-        alert("error");
+        alert(error);
         console.error('Error loading dictionaries:', error);
     }
 }
