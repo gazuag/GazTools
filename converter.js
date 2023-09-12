@@ -1,5 +1,5 @@
 ---
-permalink: /pinyinize/converter.json  
+permalink: /pinyinize/converter.js  
 ---
 // Define dictionaries
 let dictionary4Plus = {};
