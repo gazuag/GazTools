@@ -1,3 +1,6 @@
+---
+permalink: /pinyinize/converter.json  
+---
 // Define dictionaries
 let dictionary4Plus = {};
 let dictionary3 = {};
