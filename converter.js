@@ -40,7 +40,7 @@ function convert() {
     for (const dictionary of dictionaries) {
         for (const [key, value] of Object.entries(dictionary)) {
             // Use the replaceAll function to replace all occurrences of key with value
-            outputText = replaceAll(outputText, key, value);
+            outputText = outputText.split(key).join(value);
         }
     }
 alert(outputText);
@@ -53,3 +53,24 @@ window.addEventListener('load', loadDictionaries);
 
 // Attach the convert function to the button click event
 document.getElementById('convertButton').addEventListener('click', convert);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
