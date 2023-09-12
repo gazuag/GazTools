@@ -28,7 +28,7 @@ async function loadDictionaries() {
 // Function to perform the conversion
 function convert() {
     const inputText = document.getElementById('input').value;
-    let outputText = inputText;
+    var outputText = inputText;
 
 // Define a string replacement function
     function replaceAll(input, search, replace) {
@@ -43,7 +43,7 @@ function convert() {
             outputText = replaceAll(outputText, key, value);
         }
     }
-
+alert(outputText);
     // Output the result
     document.getElementById('output').value = outputText;
 }
