@@ -28,10 +28,10 @@ async function loadDictionaries() {
     try {
         const cache = await caches.open('dictionaryCache');
         const responses = await Promise.all([
-            fetch('/pinyinize/pinyin1.json').then(response => cache.put('/pinyinize/pinyin1.json', response.clone()).then(() => response.json())),
-            fetch('/pinyinize/pinyin2.json').then(response => cache.put('/pinyinize/pinyin2.json', response.clone()).then(() => response.json())),
-            fetch('/pinyinize/pinyin3.json').then(response => cache.put('/pinyinize/pinyin3.json', response.clone()).then(() => response.json())),
-            fetch('/pinyinize/pinyin4.json').then(response => cache.put('/pinyinize/pinyin4.json', response.clone()).then(() => response.json()))
+            fetch('/pinyinizer/pinyin1.json').then(response => cache.put('/pinyinizer/pinyin1.json', response.clone()).then(() => response.json())),
+            fetch('/pinyinizer/pinyin2.json').then(response => cache.put('/pinyinizer/pinyin2.json', response.clone()).then(() => response.json())),
+            fetch('/pinyinizer/pinyin3.json').then(response => cache.put('/pinyinizer/pinyin3.json', response.clone()).then(() => response.json())),
+            fetch('/pinyinizer/pinyin4.json').then(response => cache.put('/pinyinizer/pinyin4.json', response.clone()).then(() => response.json()))
         ]);
         [dictionary1, dictionary2, dictionary3, dictionary4Plus] = responses;
 
