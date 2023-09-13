@@ -29,16 +29,26 @@ let corrections = {
 // Function to load JSON dictionary files
 async function loadDictionaries() {
     try {
-        const [data4, data3, data2, data1] = await Promise.all([
+        const cache = await caches.open('dictionaryCache');
+        const responses = await Promise.all([
+            fetch('/pinyinize/pinyin1.json').then(response => cache.put('/pinyinize/pinyin1.json', response.clone()).then(() => response.json())),
+            fetch('/pinyinize/pinyin2.json').then(response => cache.put('/pinyinize/pinyin2.json', response.clone()).then(() => response.json())),
+            fetch('/pinyinize/pinyin3.json').then(response => cache.put('/pinyinize/pinyin3.json', response.clone()).then(() => response.json())),
+            fetch('/pinyinize/pinyin4.json').then(response => cache.put('/pinyinize/pinyin4.json', response.clone()).then(() => response.json()))
+        ]);
+        [dictionary1, dictionary2, dictionary3, dictionary4Plus] = responses;
+
+/*        const [data4, data3, data2, data1] = await Promise.all([
             fetch('/pinyinize/pinyin4.json').then(response => response.json()),
             fetch('/pinyinize/pinyin3.json').then(response => response.json()),
             fetch('/pinyinize/pinyin2.json').then(response => response.json()),
             fetch('/pinyinize/pinyin1.json').then(response => response.json())
         ]);
+        
         dictionary1 = data1;
         dictionary2 = data2;
         dictionary3 = data3;
-        dictionary4Plus = data4;
+        dictionary4Plus = data4;*/
     } catch (error) {
         console.error('Error loading dictionaries:', error);
     }
