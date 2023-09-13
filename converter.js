@@ -18,7 +18,9 @@ let corrections = {
     " ,": ",",
     " .": ".",
     " !":"!",
-    " ?":"?"
+    " ?":"?",
+    " ;":";",
+    " :":":"
 }
 
 // Function to load JSON dictionary files
