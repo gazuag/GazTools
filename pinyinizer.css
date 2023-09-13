@@ -24,6 +24,22 @@ textarea {
     resize: none;
 }
 
+.input-container,
+.output-container {
+    width: 100%;
+    max-width: 600px; /* You can adjust the maximum width as needed */
+    margin: 0 auto;
+}
+
+.input-container textarea,
+.output-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    resize: none;
+}
+
+
 .button-container {
     display: flex;
     justify-content: center;
