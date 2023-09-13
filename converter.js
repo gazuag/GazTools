@@ -11,17 +11,21 @@ let dictionary1 = {};
 async function loadDictionaries() {
     alert("foo");
     try {
-        alert("trying");
-        const [data4, data3, data2, data1] = await Promise.all([
-            fetch('/pinyinize/pinyin4.json').then(response => response.json()),
+        alert("trying"); 
+        //, data3, data2, data1
+        /*
+        ,
             fetch('/pinyinize/pinyin3.json').then(response => response.json()),
             fetch('/pinyinize/pinyin2.json').then(response => response.json()),
             fetch('/pinyinize/pinyin1.json').then(response => response.json())
+        */
+        const [data4] = await Promise.all([
+            fetch('/pinyinize/pinyin4.json').then(response => response.json())
         ]);
         alert("promise");
-        dictionary1 = data1;
-        dictionary2 = data2;
-        dictionary3 = data3;
+        //dictionary1 = data1;
+        //dictionary2 = data2;
+        //dictionary3 = data3;
         dictionary4Plus = data4;
         alert("loaded");
     } catch (error) {
