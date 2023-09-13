@@ -10,7 +10,6 @@ let dictionary1 = {};
 // Function to load JSON dictionary files
 async function loadDictionaries() {
     try {
-
         const [data4, data3, data2, data1] = await Promise.all([
             fetch('/pinyinize/pinyin4.json').then(response => response.json()),
             fetch('/pinyinize/pinyin3.json').then(response => response.json()),
@@ -34,7 +33,7 @@ function convert() {
     const dictionaries = [dictionary4Plus, dictionary3, dictionary2, dictionary1];
     for (const dictionary of dictionaries) {
         for (const [key, value] of Object.entries(dictionary)) {
-            outputText = outputText.split(key).join(value);
+            outputText = outputText.split(key).join(value + " ");
         }
     }
     console.log(outputText);
