@@ -10,22 +10,17 @@ let dictionary1 = {};
 // Function to load JSON dictionary files
 async function loadDictionaries() {
     try {
-        //, data3, data2, data1
-        /*
-        
-            fetch('/pinyinize/pinyin1.json').then(response => response.json())
-        */
-        const [data4, data3, data2] = await Promise.all([
+
+        const [data4, data3, data2, data1] = await Promise.all([
             fetch('/pinyinize/pinyin4.json').then(response => response.json()),
             fetch('/pinyinize/pinyin3.json').then(response => response.json()),
             fetch('/pinyinize/pinyin2.json').then(response => response.json()),
+            fetch('/pinyinize/pinyin1.json').then(response => response.json())
         ]);
-        //dictionary1 = data1;
+        dictionary1 = data1;
         dictionary2 = data2;
         dictionary3 = data3;
         dictionary4Plus = data4;
-        console.log(dictionary2);
-        alert("loaded");
     } catch (error) {
         console.error('Error loading dictionaries:', error);
     }
@@ -35,17 +30,14 @@ async function loadDictionaries() {
 function convert() {
     const inputText = document.getElementById('input').value;
     var outputText = inputText;
-
-
     // Iterate through dictionaries and replace matching strings
     const dictionaries = [dictionary4Plus, dictionary3, dictionary2, dictionary1];
     for (const dictionary of dictionaries) {
         for (const [key, value] of Object.entries(dictionary)) {
-            // Use the replaceAll function to replace all occurrences of key with value
             outputText = outputText.split(key).join(value);
         }
     }
-console.log(outputText);
+    console.log(outputText);
     // Output the result
     document.getElementById('output').value = outputText;
 }
