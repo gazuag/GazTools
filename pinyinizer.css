@@ -3,18 +3,28 @@ body {
     margin: 0;
     padding: 0;
 }
-
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100vh; /* 100% of viewport height */
+    justify-content: center;
     align-items: center;
-    padding: 20px;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
 }
 
 h1 {
     text-align: center;
+    margin-bottom: 10px;
+}
+
+.input-container,
+.output-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
 }
 
 textarea {
@@ -24,25 +34,10 @@ textarea {
     resize: none;
 }
 
-.input-container,
-.output-container {
-    width: 100%;
-    max-width: 600px; /* You can adjust the maximum width as needed */
-    margin: 0 auto;
-}
-
-.input-container textarea,
-.output-container textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    resize: none;
-}
-
-
 .button-container {
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 
 #convertButton {
