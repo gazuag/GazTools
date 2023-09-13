@@ -3,28 +3,27 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100vh;
-    padding: 0;
-    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 10px;
+    margin: 0 0 10px; /* Add bottom margin to the header for separation */
 }
 
 .input-container,
 .output-container {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 10px;
+    box-sizing: border-box;
 }
 
 textarea {
@@ -32,12 +31,12 @@ textarea {
     padding: 10px;
     margin: 5px 0;
     resize: none;
+    flex-grow: 1; /* Allow textareas to expand vertically */
 }
 
 .button-container {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
 }
 
 #convertButton {
