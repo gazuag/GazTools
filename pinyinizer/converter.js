@@ -1,6 +1,3 @@
----
-permalink: /pinyinize/converter.js  
----
 // Define dictionaries
 let dictionary4Plus = {};
 let dictionary3 = {};
