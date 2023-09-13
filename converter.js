@@ -24,8 +24,7 @@ async function loadDictionaries() {
         dictionary2 = data2;
         dictionary3 = data3;
         dictionary4Plus = data4;
-        console.log(dictionary4Plus);
-        console.log(dictionary3);
+        console.log(dictionary2);
         alert("loaded");
     } catch (error) {
         console.error('Error loading dictionaries:', error);
