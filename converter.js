@@ -6,6 +6,16 @@ let dictionary4Plus = {};
 let dictionary3 = {};
 let dictionary2 = {};
 let dictionary1 = {};
+let corrections = {
+    " 。":". ",
+    "；":"; ",
+    "：":": ",
+    "-":"-",
+    "！":"! ",
+    "？":"? ",
+    "，":", ",
+    "  ": " "
+}
 
 // Function to load JSON dictionary files
 async function loadDictionaries() {
@@ -30,7 +40,7 @@ function convert() {
     const inputText = document.getElementById('input').value;
     var outputText = inputText;
     // Iterate through dictionaries and replace matching strings
-    const dictionaries = [dictionary4Plus, dictionary3, dictionary2, dictionary1];
+    const dictionaries = [dictionary4Plus, dictionary3, dictionary2, dictionary1, corrections];
     for (const dictionary of dictionaries) {
         for (const [key, value] of Object.entries(dictionary)) {
             outputText = outputText.split(key).join(value + " ");
