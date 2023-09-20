@@ -26,7 +26,6 @@ let corrections = {
 // Function to load JSON dictionary files
 async function loadDictionaries() {
     try {
-        try {
         if ('serviceWorker' in navigator) {
             const registration = await navigator.serviceWorker.ready;
             const cache = await caches.open('dictionaryCache');
