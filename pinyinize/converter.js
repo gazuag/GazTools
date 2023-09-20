@@ -26,26 +26,34 @@ let corrections = {
 // Function to load JSON dictionary files
 async function loadDictionaries() {
     try {
-        const cache = await caches.open('dictionaryCache');
-        const responses = await Promise.all([
-            fetch('/pinyinizer/pinyin1.json').then(response => cache.put('/pinyinizer/pinyin1.json', response.clone()).then(() => response.json())),
-            fetch('/pinyinizer/pinyin2.json').then(response => cache.put('/pinyinizer/pinyin2.json', response.clone()).then(() => response.json())),
-            fetch('/pinyinizer/pinyin3.json').then(response => cache.put('/pinyinizer/pinyin3.json', response.clone()).then(() => response.json())),
-            fetch('/pinyinizer/pinyin4.json').then(response => cache.put('/pinyinizer/pinyin4.json', response.clone()).then(() => response.json()))
-        ]);
-        [dictionary1, dictionary2, dictionary3, dictionary4Plus] = responses;
+        try {
+        if ('serviceWorker' in navigator) {
+            const registration = await navigator.serviceWorker.ready;
+            const cache = await caches.open('dictionaryCache');
 
-/*        const [data4, data3, data2, data1] = await Promise.all([
-            fetch('/pinyinize/pinyin4.json').then(response => response.json()),
-            fetch('/pinyinize/pinyin3.json').then(response => response.json()),
-            fetch('/pinyinize/pinyin2.json').then(response => response.json()),
-            fetch('/pinyinize/pinyin1.json').then(response => response.json())
-        ]);
-        
-        dictionary1 = data1;
-        dictionary2 = data2;
-        dictionary3 = data3;
-        dictionary4Plus = data4;*/
+            const fetchAndCache = async (url) => {
+                try {
+                    const response = await fetch(url);
+                    await cache.put(url, response.clone());
+                    return await response.json();
+                } catch (error) {
+                    console.error(`Error fetching and caching ${url}:`, error);
+                }
+            };
+
+            const [data1, data2, data3, data4] = await Promise.all([
+                fetchAndCache('/pinyinize/pinyin1.json'),
+                fetchAndCache('/pinyinize/pinyin2.json'),
+                fetchAndCache('/pinyinize/pinyin3.json'),
+                fetchAndCache('/pinyinize/pinyin4plus.json')
+            ]);
+               dictionary1 = data1;
+            dictionary2 = data2;
+            dictionary3 = data3;
+            dictionary4Plus = data4;
+        } else {
+            console.error('Service workers are not supported in this browser.');
+        }
     } catch (error) {
         console.error('Error loading dictionaries:', error);
     }
@@ -73,7 +81,15 @@ window.addEventListener('load', loadDictionaries);
 // Attach the convert function to the button click event
 document.getElementById('convertButton').addEventListener('click', convert);
 
-
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+        .then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(error => {
+            console.error('Service Worker registration failed:', error);
+        });
+}
 
 
 
