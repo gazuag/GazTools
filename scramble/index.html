@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Replacement</title>
+</head>
+<body>
+
+<input type="text" id="textInput" placeholder="Enter text">
+<button onclick="replaceCharacters()">Replace</button>
+
+<script>
+function replaceCharacters() {
+  // Get the input text
+  let inputText = document.getElementById("textInput").value;
+
+  // Define the character replacement dictionary
+  const charDictionary = {
+    'a': ['b', 'c', 'd'],
+    'b': ['a', 'c', 'd'],
+    'c': ['a', 'b', 'd'],
+    // Add more characters as needed
+  };
+
+  // Replace characters
+  let outputText = "";
+  for (let i = 0; i < inputText.length; i++) {
+    let currentChar = inputText[i].toLowerCase(); // Convert to lowercase for case-insensitive replacement
+
+    if (charDictionary.hasOwnProperty(currentChar)) {
+      // Randomly select a replacement character
+      let replacements = charDictionary[currentChar];
+      let randomIndex = Math.floor(Math.random() * replacements.length);
+      outputText += replacements[randomIndex];
+    } else {
+      // Keep non-replaceable characters unchanged
+      outputText += inputText[i];
+    }
+  }
+
+  // Output the result back to the text field
+  document.getElementById("textInput").value = outputText;
+}
+</script>
+
+</body>
+</html>
